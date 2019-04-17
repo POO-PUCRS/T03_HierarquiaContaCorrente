@@ -1,4 +1,5 @@
 public class ContaLimite extends ContaCorrente{
+    private static final double taxaJuros = 0.03;
     private double limite;
     private double jurosAcumulado;
 
@@ -18,7 +19,7 @@ public class ContaLimite extends ContaCorrente{
     }
 
     public boolean quitaJuros(){
-        if (getSaldo() - jurosAcumulado > limite){
+        if (getSaldo() - jurosAcumulado < limite){
             return false;
         }else{
             retirada(jurosAcumulado);
@@ -29,8 +30,8 @@ public class ContaLimite extends ContaCorrente{
 
     @Override
     public boolean retirada(double valor){
-        if (getSaldo() - valor < limite){
-            double juros = Math.abs(getSaldo()-valor-limite)*0.03;
+        if (getSaldo()-valor > 0 && getSaldo() - valor < limite){
+            double juros = Math.abs(getSaldo()-valor-limite)*taxaJuros;
             jurosAcumulado += juros;
         }
         return super.retirada(valor);
