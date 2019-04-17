@@ -7,6 +7,10 @@ public class ContaCorrente{
         saldo = 0.0;
     }
 
+    public String getId(){
+        return id;
+    }
+
     public double getSaldo(){
         return saldo;
     }
