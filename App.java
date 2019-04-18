@@ -12,5 +12,11 @@ public class App{
         ct.deposito(30);
         System.out.println(ct.getSaldo());
         System.out.println(ct.getTotDep());
+
+        ContaRemunerada cr = new ContaRemunerada("A1245", 1.045);
+        cr.deposito(100);
+        cr.retirada(50);
+        cr.deposito(30);
+        System.out.println(cr.getSaldo());
     }
 }
